@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../../Shared/Header/Header';
 import Banner from '../Banner/Banner';
 import ChefCard from '../ChefCard/ChefCard';
+import Priorities from '../Priorities/Priorities';
 
 const Home = () => {
     const [chefs, setChefs] = useState([]);
@@ -22,6 +23,8 @@ const Home = () => {
                     ></ChefCard>)
                 }
             </div>
+            <h2 className='font-bold text-center text-4xl mb-12'>Our Priority</h2>
+            <Priorities></Priorities>
         </div>
     );
 };
