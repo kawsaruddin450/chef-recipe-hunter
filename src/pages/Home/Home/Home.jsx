@@ -14,7 +14,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <h2 className='font-bold text-center mb-12 mt-28 text-4xl'>Our Chefs</h2>
-            <div className='lg:container mx-auto mb-28 grid lg:grid-cols-3 md:grid-cols-2 gap-4'>
+            <div className='lg:container mx-auto mb-28 grid lg:grid-cols-3 sm:grid-cols-2 gap-4'>
                 {
                     chefs.map(chef => <ChefCard
                         key={chef.id}
