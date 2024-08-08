@@ -7,11 +7,14 @@ const Banner = () => {
             backgroundImage: `url(${background})`,
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            padding: '300px',
+            backgroundSize: '100%',
+            backgroundColor: 'gray',
+            backgroundBlendMode: 'multiply',
             color: 'white',
-        }} >
-            <h1>Hello World!</h1>
+        }}
+        className='text-center py-36' >
+            <h1 className='font-extrabold text-7xl'>TteokBokki</h1>
+            <p className='text-medium text-2xl text-green-300'>Eat healthy, natural, tasty! Be Energetic!</p>
         </div>
     );
 };
