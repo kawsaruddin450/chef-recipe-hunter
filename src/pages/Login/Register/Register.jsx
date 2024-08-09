@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const Register = () => {
     const {signUpUser} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const [error, setError] = useState('');
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -16,6 +18,7 @@ const Register = () => {
         .then(result => {
             const user = result.user;
             console.log(user)
+            navigate('/');
         })
         .catch(error => {
             console.log(error.code);
@@ -40,6 +43,9 @@ const Register = () => {
                                 <input type="password" placeholder="password" name='password' id='password' className="input input-bordered" required />
                                 <label className='label-text-alt'>
                                     Already have an account? <Link to='/login' className='text-green-300 link link-hover'>Login now</Link>
+                                </label>
+                                <label className='label-text-alt'>
+                                    {error}
                                 </label>
                             </div>
                             <div className="form-control mt-6">

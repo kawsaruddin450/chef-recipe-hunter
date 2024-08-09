@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const Login = () => {
-    const {user, logInUser} = useContext(AuthContext);
+    const { user, logInUser, resetPass } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
+    const [error, setError] = useState('');
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -15,15 +16,15 @@ const Login = () => {
         const password = form.password.value;
 
         logInUser(email, password)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-            form.reset();
-            navigate(from);
-        })
-        .catch(error => {
-            console.log(error.code)
-        })
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+                navigate(from);
+            })
+            .catch(error => {
+                setError(error.code);
+            })
     }
     return (
         <div>
@@ -39,11 +40,11 @@ const Login = () => {
                             </div>
                             <div className="form-control">
                                 <input type="password" placeholder="password" name='password' id='password' className="input input-bordered" required />
-                                <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                </label>
                                 <label className='label-text-alt'>
                                     Don't have an account? <Link to='/register' className='text-green-300 link link-hover'>create now</Link>
+                                </label>
+                                <label className='label-text-alt text-red-700'>
+                                    {error} 
                                 </label>
                             </div>
                             <div className="form-control mt-6">
