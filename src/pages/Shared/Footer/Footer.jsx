@@ -5,7 +5,7 @@ import { FaFacebookF } from 'react-icons/fa6';
 const Footer = () => {
     return (
         <div>
-            <footer className="footer bg-neutral text-neutral-content items-center p-4">
+            <footer className="footer bg-neutral border-t-4 border-green-300 text-neutral-content items-center p-4">
                 <aside className="grid-flow-col items-center">
                     <svg
                         width="36"

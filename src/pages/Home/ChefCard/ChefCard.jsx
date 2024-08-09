@@ -3,6 +3,7 @@ import { CiStar } from 'react-icons/ci';
 import { FaStar } from 'react-icons/fa';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import Rating from 'react-rating';
+import { Link } from 'react-router-dom';
 
 const ChefCard = ({ chef }) => {
     const { id, name, ratings, image_link, list_of_recipes, recipe_count, restaurant, experience } = chef;
@@ -32,7 +33,11 @@ const ChefCard = ({ chef }) => {
                             <span className='ml-2 text-xl'>{ratings}</span>
                         </div>
                         <div className="card-actions justify-start">
-                            <button className="btn bg-green-300 font-semibold">View Recipes <FaArrowRightLong></FaArrowRightLong> </button>
+                            <button className="btn bg-green-300 font-semibold">
+                                <Link to={`/chef/${id}`}>
+                                    View Recipes <FaArrowRightLong className='inline'></FaArrowRightLong>
+                                </Link>
+                            </button>
                         </div>
                     </div>
                 </div>
