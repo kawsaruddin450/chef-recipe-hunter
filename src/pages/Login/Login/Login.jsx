@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
-    const { user, logInUser, resetPass } = useContext(AuthContext);
+    const { user, logInUser, resetPass, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -26,6 +27,26 @@ const Login = () => {
                 setError(error.code);
             })
     }
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+        .then(result => {
+            console.log(result.user);
+            navigate(from);
+        })
+        .catch(error => {
+            setError(error.code);
+        })
+    }
+    const handleGithubSignIn = () => {
+        signInWithGithub()
+        .then(result => {
+            console.log(result.user);
+            navigate(from);
+        })
+        .catch(error => {
+            setError(error.code);
+        })
+    }
     return (
         <div>
             <div className="hero bg-base-200 h-screen">
@@ -44,11 +65,17 @@ const Login = () => {
                                     Don't have an account? <Link to='/register' className='text-green-300 link link-hover'>create now</Link>
                                 </label>
                                 <label className='label-text-alt text-red-700'>
-                                    {error} 
+                                    {error}
                                 </label>
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn bg-green-300 font-bold" type='submit'>Login</button>
+                            </div>
+                            <h2 className='text-xl text-center'>Other Ways to login</h2>
+                            <hr className='border-b-2 border-green-300' />
+                            <div className="mt-6 flex text-center gap-6 mx-auto">
+                                <button onClick={handleGoogleSignIn}><FaGoogle className='inline text-2xl text-green-300 hover:text-neutral'></FaGoogle> </button>
+                                <button onClick={handleGithubSignIn}><FaGithub className='inline text-2xl text-green-300 hover:text-neutral'></FaGithub></button>
                             </div>
                         </form>
                     </div>
