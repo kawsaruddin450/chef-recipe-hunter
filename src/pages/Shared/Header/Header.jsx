@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaRegUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Header = () => {
+    const {user, signOutUser} = useContext(AuthContext);
+    const handleSignOut = () => {
+        signOutUser()
+        .then(result => {
+            console.log("Signed Out");
+        })
+        .catch(error => {
+            console.log(error.code);
+        })
+    }
     return (
         <div className='bg-green-400'>
             <div className="navbar lg:container mx-auto">
@@ -45,7 +56,11 @@ const Header = () => {
                 </div>
                 <div className="navbar-end">
                     <FaRegUserCircle className='text-4xl mr-4'></FaRegUserCircle>
-                    <a className="btn btn-neutral">Login</a>
+                    {
+                        user ?
+                        <button className='btn btn-neutral' onClick={handleSignOut}>Log Out</button>
+                        : <Link to='/login' className="btn btn-neutral">Login</Link>
+                    }
                 </div>
             </div>
         </div>
