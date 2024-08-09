@@ -11,7 +11,7 @@ const Chef = () => {
                 chef={chef}
             ></ChefDetails>
             <hr className='border-2 mx-auto border-slate-900' />
-            <div className='lg:container'>
+            <div className='lg:container mx-auto'>
                 <h1 className='text-center text-6xl font-bold my-12'>Recipes</h1>
                 <div className='grid lg:grid-cols-3 sm:grid-cols-2 gap-8 mb-12'>
                     {
