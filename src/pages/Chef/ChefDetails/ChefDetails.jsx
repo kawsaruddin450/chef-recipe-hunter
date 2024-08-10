@@ -3,6 +3,7 @@ import Chef from '../Chef/Chef';
 
 const ChefDetails = ({chef}) => {
     const {id, name, ratings, restaurant, image_link, recipe_count, experience} = chef;
+    console.log(name);
     return (
         <div>
             <div className="hero bg-base-200 min-h-screen">

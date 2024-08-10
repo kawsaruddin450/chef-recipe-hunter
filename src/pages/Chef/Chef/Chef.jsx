@@ -5,10 +5,11 @@ import RecipeCard from '../RecipeCard/RecipeCard';
 
 const Chef = () => {
     const { chef, recipes } = useLoaderData();
+    const ch = chef[0];
     return (
         <div>
             <ChefDetails
-                chef={chef}
+                chef={ch}
             ></ChefDetails>
             <hr className='border-2 mx-auto border-slate-900' />
             <div className='lg:container mx-auto'>
