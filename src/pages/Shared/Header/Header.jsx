@@ -40,7 +40,7 @@ const Header = () => {
                             <li>
                                 <ActiveLink to='/'>Home</ActiveLink>
                             </li>
-                            <li><ActiveLink>Blog</ActiveLink></li>
+                            <li><ActiveLink to='/blog'>Blog</ActiveLink></li>
                             <li><ActiveLink>About Us</ActiveLink></li>
                         </ul>
                     </div>
@@ -51,7 +51,7 @@ const Header = () => {
                         <li>
                             <ActiveLink to='/'>Home</ActiveLink>
                         </li>
-                        <li><ActiveLink to='/login'>Blog</ActiveLink></li>
+                        <li><ActiveLink to='/blog'>Blog</ActiveLink></li>
                         <li><ActiveLink to='login'>About Us</ActiveLink></li>
                     </ul>
                 </div>
